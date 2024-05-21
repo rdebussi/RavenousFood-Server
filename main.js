@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const connection = require("./database/connection")
 const routes = require("./routes/index")
 const User = require("./models/User")
+const Restaurant = require("./models/Restaurant")
 
 
 app.set('view engine', 'ejs')
