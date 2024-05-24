@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize")
 const connection = require("../database/connection")
+const Credential = require("./Credentials")
 
 const Restaurant = connection.define('restaurants', {
     name: {
@@ -14,10 +15,23 @@ const Restaurant = connection.define('restaurants', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    credentiableId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+    }
 })
 
-Restaurant.sync({force: false}).then(() => {
-    console.log("Restaurants table created sucessfully")
-});
+
+
+/*Credential.hasOne(Restaurant, {
+    foreignKey: 'credentiableId',
+})*/
+
+Credential.hasOne(Restaurant, { foreignKey: 'credentiableId' });
+
+Restaurant.belongsTo(Credential, { foreignKey: 'credentiableId' });
+
+
 
 module.exports = Restaurant

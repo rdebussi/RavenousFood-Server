@@ -19,7 +19,6 @@ const UserServices = {
     async getUsers () {
         try {
             const users = await User.findAll()
-            console.log(users)
             return users
 
         } catch(err) {

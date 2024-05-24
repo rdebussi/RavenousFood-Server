@@ -17,6 +17,9 @@ routes.delete("/user/:id", UserController.deleteUser)
 routes.post("/restaurant", RestaurantController.createRestaurant)
 routes.get("/restaurant", RestaurantController.getRestaurants)
 routes.get("/restaurant/:id", RestaurantController.getRestaurantById)
-
+routes.patch("/restaurant/adress/:id", RestaurantController.updateRestaurantAddress)
+routes.patch("/restaurant/name/:id", RestaurantController.updateRestaurantName)
+routes.patch("/restaurant/telefone/:id", RestaurantController.updateRestaurantTelefone)
+routes.delete("/restaurant/:id", RestaurantController.deleteRestaurant)
 
 module.exports = routes

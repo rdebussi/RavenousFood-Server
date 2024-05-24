@@ -32,6 +32,35 @@ const Validator = {
 
         return true
     },
+
+    updateNameValidator(name) {
+        const maxNameLength = 100
+        if (typeof name !== 'string' || name.length > maxNameLength) {
+            throw new Error("Invalid Name");
+        }
+
+        return true
+    },
+
+    updateAddressValidator(adress) {
+        
+        const maxAdressLength = 255
+        if (typeof adress !== 'string' || adress.length > maxAdressLength) {
+            throw new Error("Invalid Address");
+        }
+
+        return true
+    },
+
+    updateTelefoneValidator(telefone) {
+        
+        const maxTelefoneLength = 20
+        if (typeof telefone !== 'string' || telefone.length > maxTelefoneLength) {
+            throw new Error("Invalid phone number");
+        }
+
+        return true
+    }
 }
 
 module.exports = Validator

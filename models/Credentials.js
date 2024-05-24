@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize")
 const connection = require("../database/connection")
 
-const User = connection.define('users', {
+const Credential = connection.define('credentials', {
     email: {
         type: Sequelize.STRING,
         allowNull: false
@@ -10,10 +10,14 @@ const User = connection.define('users', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    type: {
+    credentiableType: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+
 })
 
-module.exports = User
+
+
+
+module.exports = Credential

@@ -12,7 +12,7 @@ const RestaurantController = {
         }
     },
 
-    async getRestaurants(req, res){
+    async getRestaurants(_, res){
         try{
             const restaurants = await Services.getRestaurants()
             res.status(200).json(restaurants)
@@ -30,7 +30,53 @@ const RestaurantController = {
         }  catch(err){
             res.status(400).json({error: err.message})
         }
+    },
+
+    async updateRestaurantName (req, res) {
+        const { name } = req.body
+        try {
+            Validator.updateNameValidator(name)
+            const result = await Services.updateName(req)
+            res.status(200).json({result})
+        } catch (err) {
+            res.status(400).json({error : err.message})
+        }
+    },
+
+
+    async updateRestaurantAddress (req, res) {
+        const { adress } = req.body
+        try {
+            Validator.updateAddressValidator(adress)
+            const result = await Services.updateAddress(req)
+            res.status(200).json({result})
+        } catch (err) {
+            res.status(400).json({error : err.message})
+        }
+    },
+
+    async updateRestaurantTelefone (req, res){
+        const { telefone } = req.body
+        try {
+            Validator.updateTelefoneValidator(telefone)
+            const result = await Services.updateTelefone(req)
+            res.status(200).json({result})
+        } catch(err){
+            res.status(400).json({error: err.message})
+        }
+    },
+
+    async deleteRestaurant (req, res) {
+        try {
+            const result = await Services.deleteRestaurant(req)
+            res.status(200).json({result})
+        } catch (err) {
+            res.status(400).json({error: err.message})
+        }
     }
 }
+
+
+
 
 module.exports = RestaurantController
