@@ -7,14 +7,14 @@ const UserController = {
     async createUser(req, res) {
         try {
             Validator.createUserValidator(req);
-            await UserServices.createUser(req.body);
-            res.status(201).json({ message: "User created successfully" });
-        } catch (error) {
-            res.status(400).json({ error: error.message });
+            const result = await UserServices.createUser(req.body);
+            res.status(201).json(result);
+        } catch (err) {
+            res.status(400).json({error: err.message});
         }
     },
 
-    async getUsers(req, res) {
+    async getUsers(_, res) {
         try {
             const users = await UserServices.getUsers()
             res.status(200).json({users})
@@ -35,37 +35,37 @@ const UserController = {
         }
     },
 
-    async updateUserEmail(req, res) {
-        try {
-            Validator.updateUserValidator(req)
-            await UserServices.checkPassword(req)
-            const updatedUserEmail = await UserServices.updateUserEmail(req)
-            res.status(200).json({updatedUserEmail})
-        }   catch(err) {
-            res.status(400).json({error : err.message})
-        }   
-
-    },
-
     async updateUserPassword (req, res) {
         try {
             Validator.updateUserValidator(req)
             await UserServices.checkPassword(req)
             const result = await UserServices.updateUserPassword(req)
-            res.status(200).json({result})
+            res.status(200).json(result)
         }
        catch(err) {
         res.status(400).json({error: err.message})
         }
     },
 
-    async updateUserType (req, res) {
-        try {
-            Validator.updateUserValidator(req)
-            const result = await UserServices.updateType(req)
-            res.status(200).json({result})
-        } catch (err) {
-            res.status(400).json({error : err.message})
+    async updateAdress (req, res){
+        try{
+            Validator.updateAdressValidator(req)
+            await UserServices.checkPassword(req)
+            const result = await UserServices.updateUserAdress(req)
+            res.status(200).json(result)
+        }   catch(err) {
+            res.status(400).json({error: err.message})
+        }
+    },
+
+    async updateName (req, res){
+        try{
+            Validator.updateNameValidator(req)
+            await UserServices.checkPassword(req)
+            const result = await UserServices.updateUserName(req)
+            res.status(200).json(result)
+        }   catch(err) {
+            res.status(400).json({error: err.message})
         }
     },
 

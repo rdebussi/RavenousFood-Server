@@ -32,9 +32,9 @@ async function startServer() {
         
         await Promise.all([
             /* Sincroniza todas as tabelas
-            connection.query("SET FOREIGN_KEY_CHECKS = 0");
-        / Excluir a tabela
-            connection.query("DROP TABLE IF EXISTS credentials");*/
+            connection.query("SET FOREIGN_KEY_CHECKS = 0"),
+        // Excluir a tabela
+            connection.query("DROP TABLE IF EXISTS credentials")*/
             User.sync({ force: false }),
             Credential.sync({ force: false }),
             Restaurant.sync({ force: false })

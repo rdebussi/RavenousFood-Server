@@ -3,11 +3,11 @@ const User = require("../models/User")
 const Validator = {
     createUserValidator(req) {
 
-            let { email, password, type } = req.body;
+            let { email, password, adress } = req.body;
 
             const maxEmailLength = 255;
             const maxPasswordLength = 128;
-            const maxTypeLength = 50;
+            const maxAdressLength = 255;
 
             if (typeof email !== 'string' || email.length > maxEmailLength) {
                 throw new Error("Invalid email");
@@ -17,15 +17,14 @@ const Validator = {
                 throw new Error("Invalid password");
             }
 
-            if (typeof type !== 'string' || type.length > maxTypeLength) {
-                throw new Error("Invalid type");
+            if (typeof adress !== 'string' || adress.length > maxAdressLength) {
+                throw new Error("Invalid adress");
             }
 
          return true
     },
 
     getUserByIdValidator(id) {
-        console.log(id)
         const parsedId = parseInt(id, 10);
         if (isNaN(parsedId) || parsedId <= 0) {
             throw new Error('Invalid ID' + parsedId);
@@ -34,26 +33,33 @@ const Validator = {
         return true
     },
 
-    updateUserValidator(req) {
+    updateAdressValidator(req) {
         const { id } = req.params
-        const { email, password, type } = req.body
+        const { newAdress } = req.body
 
-        const maxEmailLength = 255;
-            const maxPasswordLength = 128;
-            const maxTypeLength = 50;
+        const maxAdressLength = 255
 
-            if (typeof email !== 'string' || email.length > maxEmailLength) {
-                throw new Error("Invalid email");
+            if (typeof newAdress !== 'string' || newAdress.length > maxAdressLength) {
+                throw new Error("Invalid Adress");
             }
 
-            if (typeof password !== 'string' || password.length > maxPasswordLength) {
-                throw new Error("Invalid password");
+
+            const parsedId = parseInt(id, 10);
+            if (isNaN(parsedId) || parsedId <= 0) {
+            throw new Error('Invalid ID');
             }
 
-            if (typeof type !== 'string' || type.length > maxTypeLength) {
-                throw new Error("Invalid type");
-            }
+         return true
+    },
 
+    updateNameValidator(req) {
+        const { id } = req.params
+        const { newUserName } = req.body
+
+        const maxNameLength = 255
+            if (typeof newUserName !== 'string' || newUserName.length > maxNameLength) {
+                throw new Error("Invalid name");
+            }
             const parsedId = parseInt(id, 10);
             if (isNaN(parsedId) || parsedId <= 0) {
             throw new Error('Invalid ID');
