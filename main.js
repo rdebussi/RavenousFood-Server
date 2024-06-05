@@ -8,7 +8,6 @@ const Credential = require("./models/Credentials")
 const Restaurant = require("./models/Restaurant")
 
 
-
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended : false}))
