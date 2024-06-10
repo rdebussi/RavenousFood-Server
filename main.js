@@ -6,6 +6,7 @@ const routes = require("./routes/index")
 const User = require("./models/User")
 const Credential = require("./models/Credentials")
 const Restaurant = require("./models/Restaurant")
+const Product = require("./models/Product")
 
 
 app.set('view engine', 'ejs')
@@ -36,7 +37,8 @@ async function startServer() {
             connection.query("DROP TABLE IF EXISTS credentials")*/
             User.sync({ force: false }),
             Credential.sync({ force: false }),
-            Restaurant.sync({ force: false })
+            Restaurant.sync({ force: false }),
+            Product.sync({force: false})
         ]);
 
         console.log("All tables synchronized!");

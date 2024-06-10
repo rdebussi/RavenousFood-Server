@@ -3,6 +3,7 @@ const routes = Router()
 const UserController = require("../controllers/UserController")
 const RestaurantController = require("../controllers/RestaurantController")
 const AuthController = require("../controllers/authController")
+const ProductController = require("../controllers/ProductController")
 const auth = require("../middleware/auth")
 
 //user
@@ -26,4 +27,16 @@ routes.delete("/restaurant/:id", RestaurantController.deleteRestaurant)
 
 //login
 routes.post("/login", AuthController.GenerateToken)
+
+
+//products
+routes.post("/product", ProductController.createProduct)
+routes.get("/product", ProductController.getAllProducts)
+routes.get("/product/restaurant/:RestaurantId", ProductController.getAllProductsByRestaurantId)
+routes.patch("/product/name/:id", ProductController.updateProductName)
+routes.patch("/product/price/:id", ProductController.updateProductPrice)
+routes.patch("/product/category/:id", ProductController.updateCategory)
+routes.patch("/product/description/:id", ProductController.updateProductDescription)
+routes.delete("/product/:id", ProductController.deleteProduct)
+
 module.exports = routes
