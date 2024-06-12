@@ -8,7 +8,7 @@ const Product = connection.define('products', {
         allowNull: false
     },
     price: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL(15,2),
         allowNull: false
     },
     category: {

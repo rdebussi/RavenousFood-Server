@@ -7,6 +7,8 @@ const User = require("./models/User")
 const Credential = require("./models/Credentials")
 const Restaurant = require("./models/Restaurant")
 const Product = require("./models/Product")
+const Order = require("./models/Order")
+const OrderProduct = require("./models/OrderProduct")
 
 
 app.set('view engine', 'ejs')
@@ -31,14 +33,18 @@ async function startServer() {
 
         
         await Promise.all([
+            //connection.query("ALTER TABLE products MODIFY price DECIMAL(15, 2)").then(() => {console.log('ok')}),
             /* Sincroniza todas as tabelas
             connection.query("SET FOREIGN_KEY_CHECKS = 0"),
         // Excluir a tabela
-            connection.query("DROP TABLE IF EXISTS credentials")*/
+            connection.query("DROP TABLE IF EXISTS orders"),
+            connection.query("DROP TABLE IF EXISTS order_products"),*/
             User.sync({ force: false }),
             Credential.sync({ force: false }),
             Restaurant.sync({ force: false }),
-            Product.sync({force: false})
+            Product.sync({force: false}),
+            Order.sync({force: false}),
+            OrderProduct.sync({force: false})
         ]);
 
         console.log("All tables synchronized!");

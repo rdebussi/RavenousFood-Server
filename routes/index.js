@@ -5,6 +5,7 @@ const RestaurantController = require("../controllers/RestaurantController")
 const AuthController = require("../controllers/authController")
 const ProductController = require("../controllers/ProductController")
 const auth = require("../middleware/auth")
+const OrderController = require("../controllers/OrderController")
 
 //user
 routes.post("/user", UserController.createUser)
@@ -38,5 +39,13 @@ routes.patch("/product/price/:id", ProductController.updateProductPrice)
 routes.patch("/product/category/:id", ProductController.updateCategory)
 routes.patch("/product/description/:id", ProductController.updateProductDescription)
 routes.delete("/product/:id", ProductController.deleteProduct)
+
+//order
+routes.post("/order", OrderController.createOrder)
+routes.get("/order/restaurant/:restaurantId", OrderController.getOrdersByRestaurantId)
+routes.get("/order/user/:userId", OrderController.getOrdersByUserId)
+routes.get("/order/:id", OrderController.getOrderById)
+routes.patch("/order/:orderId/status", OrderController.updateOrderStatus)
+
 
 module.exports = routes
