@@ -11,6 +11,7 @@ const ProductServices = {
                 price: bodyData.price,
                 category: bodyData.category,
                 description: bodyData.description,
+                product_img: bodyData.product_img,
                 RestaurantId: bodyData.RestaurantId
             })
             return newProduct;
@@ -23,7 +24,7 @@ const ProductServices = {
         const products = await Product.findAll({
             include: [{
                 model: Restaurant,
-                attributes: ['name', 'adress'] 
+                attributes: ['name', 'adress', 'profile_pic'] 
             }]
         });
         return products

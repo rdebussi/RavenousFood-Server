@@ -15,6 +15,19 @@ const Restaurant = connection.define('restaurants', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    profile_pic: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    openning_hours: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    background_img: {
+        type: Sequelize.STRING,
+        allowNull: true
+    }
+    ,
     credentiableId: {
         type: Sequelize.INTEGER,
         allowNull: false,

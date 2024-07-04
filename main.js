@@ -9,12 +9,14 @@ const Restaurant = require("./models/Restaurant")
 const Product = require("./models/Product")
 const Order = require("./models/Order")
 const OrderProduct = require("./models/OrderProduct")
+const cors = require('cors');
 
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
+app.use(cors('*'))
 
 connection
     .authenticate()
@@ -34,11 +36,11 @@ async function startServer() {
         
         await Promise.all([
             //connection.query("ALTER TABLE products MODIFY price DECIMAL(15, 2)").then(() => {console.log('ok')}),
-            /* Sincroniza todas as tabelas
-            connection.query("SET FOREIGN_KEY_CHECKS = 0"),
-        // Excluir a tabela
-            connection.query("DROP TABLE IF EXISTS orders"),
-            connection.query("DROP TABLE IF EXISTS order_products"),*/
+             //Sincroniza todas as tabelas
+        //     connection.query("SET FOREIGN_KEY_CHECKS = 0"),
+        // // Excluir a tabela
+        //     connection.query("DROP TABLE IF EXISTS restaurants"),
+        //     connection.query("DROP TABLE IF EXISTS products"),
             User.sync({ force: false }),
             Credential.sync({ force: false }),
             Restaurant.sync({ force: false }),

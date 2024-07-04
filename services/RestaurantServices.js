@@ -31,6 +31,9 @@ const RestaurantServices = {
                 name: bodyData.name,
                 adress: bodyData.adress,
                 telefone: bodyData.telefone,
+                profile_pic: bodyData.profile_pic,
+                openning_hours: bodyData.openning_hours,
+                backgroung_img: bodyData.backgroung_img,
                 credentiableId: newCredential.id
             }, { transaction });
 

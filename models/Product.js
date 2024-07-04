@@ -19,6 +19,10 @@ const Product = connection.define('products', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    product_img: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     RestaurantId: {
         type: Sequelize.INTEGER,
         allowNull: false,
