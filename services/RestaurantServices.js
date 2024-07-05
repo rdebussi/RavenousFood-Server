@@ -33,7 +33,7 @@ const RestaurantServices = {
                 telefone: bodyData.telefone,
                 profile_pic: bodyData.profile_pic,
                 openning_hours: bodyData.openning_hours,
-                backgroung_img: bodyData.backgroung_img,
+                background_img: bodyData.background_img,
                 credentiableId: newCredential.id
             }, { transaction });
 

@@ -44,7 +44,11 @@ const ProductServices = {
     
     async getAllProductsByRestaurantId (RestaurantId) {
         try {
-            const products = await Product.findAll({where: {RestaurantId}})
+            const products = await Product.findAll({where: {RestaurantId}, 
+                include: [{
+                    model: Restaurant,
+                    attributes: ['name', 'adress', 'profile_pic'] 
+                }]})
             if(!products){
                 throw new Error ("this restaurant doesn't have any product!")
             }
