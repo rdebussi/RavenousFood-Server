@@ -8,6 +8,7 @@ const auth = require("../middleware/auth")
 const OrderController = require("../controllers/OrderController")
 
 //user
+
 routes.post("/user", UserController.createUser)
 routes.get("/user", auth, UserController.getUsers)
 routes.get("/user/:id", UserController.getUserById)
@@ -32,7 +33,7 @@ routes.post("/login", AuthController.GenerateToken)
 
 //products
 routes.post("/product", ProductController.createProduct)
-routes.get("/product", ProductController.getAllProducts)
+routes.get("/product", auth, ProductController.getAllProducts)
 routes.get("/product/restaurant/:RestaurantId", ProductController.getAllProductsByRestaurantId)
 routes.patch("/product/name/:id", ProductController.updateProductName)
 routes.patch("/product/price/:id", ProductController.updateProductPrice)

@@ -12,11 +12,11 @@ const AuthController = {
             var user = await Credential.findOne({where:{email}})
             if(user == undefined){throw Error('user not found')}
             if(user.password === password){
-                Jwt.sign({userId: user.id, email: user.email}, SECRET, {expiresIn: 300}, (err, token) =>{
+                Jwt.sign({userId: user.id, email: user.email}, SECRET, {expiresIn: 3000}, (err, token) =>{
                     if(err){
                         throw Error(err)
                     } else {
-                        return res.json({auth: true, token})
+                        return res.json({auth: true, token, user})
                     }
                 })
             } else {
